@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Balance</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: pink;
+        }
+
+        .box {
+            width: 420px;
+            background-color: rgb(51, 153, 148);
+            padding: 30px;
+            margin: 50px auto;
+            text-align: center;
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            width: 45%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .deposit {
+            background-color: blue;
+        }
+
+        .withdraw {
+            background-color: red;
+        }
+
+        .msg {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: lightgreen;
+        }
+
+        .error {
+            color: yellow;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        ul li {
+            background: rgba(255,255,255,0.2);
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Balance: $<span id="balance">1000</span></h1>
+
+    <h3>Enter Amount</h3>
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <button class="deposit" onclick="deposit()">Deposit</button>
+    <button class="withdraw" onclick="withdraw()">Withdraw</button>
+
+    <div class="msg" id="msg"></div>
+
+    <h3>Transaction History</h3>
+    <ul id="history"></ul>
+</div>
+
+<script>
+    let balance = 1000;
+
+    function deposit() {
+        let amt = Number(document.getElementById("amount").value);
+
+        if (amt <= 0) {
+            showMessage("Invalid amount!", "error");
+            return;
+        }
+
+        balance += amt;
+        updateBalance();
+        addHistory("Deposited $" + amt);
+        showMessage("Deposit Successful!", "success");
+        clearInput();
+    }
+
+    function withdraw() {
+        let amt = Number(document.getElementById("amount").value);
+
+        if (amt <= 0 || amt > balance) {
+            showMessage("Invalid amount!", "error");
+            return;
+        }
+
+        balance -= amt;
+        updateBalance();
+        addHistory("Withdrawn $" + amt);
+        showMessage("Withdrawal Successful!", "success");
+        clearInput();
+    }
+
+    function updateBalance() {
+        document.getElementById("balance").innerText = balance;
+    }
+
+    function showMessage(text, type) {
+        let msg = document.getElementById("msg");
+        msg.innerText = text;
+        msg.className = "msg " + type;
+    }
+
+    function clearInput() {
+        document.getElementById("amount").value = "";
+    }
+
+    function addHistory(text) {
+        let li = document.createElement("li");
+        li.innerText = text;
+        document.getElementById("history").prepend(li);
+    }
+</script>
+
+</body>
+</html>
+
+

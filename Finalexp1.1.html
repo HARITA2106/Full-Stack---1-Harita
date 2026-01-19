@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: white;
+            width: 320px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #ff7a18;
+            background-color: #fff3e6;
+            outline: none;
+        }
+
+        .gender {
+            margin-bottom: 12px;
+        }
+
+        .gender input {
+            width: auto;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(to right, #ff7a18, #ffb347);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #ffb347, #ff7a18);
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Student Registration Form</h2>
+
+<form>
+    <label>Name</label>
+    <input type="text" placeholder="Enter your name">
+
+    <label>Email</label>
+    <input type="email" placeholder="Enter your email">
+
+    <label>Password</label>
+    <input type="password" placeholder="Enter password">
+
+    <!-- AGE INPUT ADDED -->
+    <label>Age</label>
+    <input type="number" placeholder="Enter your age" min="16" max="60">
+
+    <label>Gender</label>
+    <div class="gender">
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female
+    </div>
+
+    <label>Course</label>
+    <select>
+        <option>Select Course</option>
+        <option>BCA</option>
+        <option>B.Tech</option>
+        <option>MCA</option>
+        <option>M.Tech</option>
+    </select>
+
+    <button>Register</button>
+</form>
+
+</body>
+</html>
